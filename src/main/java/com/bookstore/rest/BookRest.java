@@ -28,9 +28,9 @@ public class BookRest {
         return bookController.getAll();
     }
 	
-//	@PostMapping(value = "/saveList", consumes = "application/json", produces = "application/json")
-//	public void saveList(@RequestBody List<BookDB> booksDB) {
-//		bookController.saveList(booksDB);
-//	}
+	@PostMapping(value = "/saveList", consumes = "application/json", produces = "application/json")
+	public List<BookDB> saveList(@RequestBody List<BookDB> booksDB) {
+		return bookController.saveList(booksDB);
+	}
 	
 }

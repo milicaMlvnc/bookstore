@@ -46,24 +46,32 @@ public class BookController {
 		return resultDB;
 	}
 	
-//	public void saveList(List<BookDB> booksDB) {
-//		List<Book> booksToSave = new ArrayList<>();
-//		for (BookDB bookDB : booksDB) {
-//			Book book = new Book();
-//			
-//	        book.setDescription(bookDB.getDescription());
-//	        book.setTitle(bookDB.getTitle());
-//	        book.setPageNumber(bookDB.getPageNumber());
-//	        book.setPrice(bookDB.getPrice());
-//	        
-//	        Author author = new Author();
-//	        author.setId(bookDB.getFkAuthor().getId());
-//	        book.setAuthor(author);
-//	        
-//	        booksToSave.add(book);
-//		}
-//
-//		bookRepo.saveAll(booksToSave);
-//	}
+	public List<BookDB> saveList(List<BookDB> booksDB) {
+		List<Book> booksToSave = new ArrayList<>();
+		for (BookDB bookDB : booksDB) {
+			Book book = new Book();
+			
+	        book.setDescription(bookDB.getDescription());
+	        book.setTitle(bookDB.getTitle());
+	        book.setPageNumber(bookDB.getPageNumber());
+	        book.setPrice(bookDB.getPrice());
+	        
+	        Author author = new Author();
+	        author.setId(bookDB.getFkAuthor().getId());
+	        book.setAuthor(author);
+	        
+	        booksToSave.add(book);
+		}
+
+		booksToSave = bookRepo.saveAll(booksToSave);
+		
+		List<BookDB> resultDB = new ArrayList<>();
+		for (Book book : booksToSave) {
+			BookDB bookDB = new BookDB(book, true);
+			resultDB.add(bookDB);
+		}
+		
+		return resultDB;
+	}
 	
 }

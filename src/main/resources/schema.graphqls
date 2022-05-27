@@ -1,15 +1,34 @@
 type Query {
-  getAll: [Book]!
+	  getAll: [Book]!
 }
 
 type Mutation {
-	save(id: ID, title: String, description: String, pageNumber: String, price: String, authorId: ID): Post
+	save(id: ID, title: String, description: String, pageNumber: Int, price: Int, authorId: ID): Book
+	saveList(books: [BookInput]): [Book]
+}
+
+input BookInput {
+  id: ID
+  pageNumber: Int
+  price: Int
+  title: String
+  author: AuthorInput,
+  description: String
 }
 
 type Book {
   id: ID
+  pageNumber: Int
+  price: Int
   title: String
-  author: Author
+  author: Author, 
+  description: String
+}
+
+input AuthorInput {
+	id: ID
+	firstName: String
+	lastName: String
 }
 
 type Author {

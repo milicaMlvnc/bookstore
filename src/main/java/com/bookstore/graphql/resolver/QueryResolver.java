@@ -1,6 +1,5 @@
 package com.bookstore.graphql.resolver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,6 @@ public class QueryResolver implements GraphQLQueryResolver {
 	public List<Book> getAll() {
 		List<Book> books = bookRepo.findAll();;
 		return books;
-//		List<BookDB> resultDB = new ArrayList<>();
-//		for (Book book : books) {
-//			resultDB.add(new BookDB(book));
-//		}
-//		
-//		return resultDB;
 	}
 	
 }

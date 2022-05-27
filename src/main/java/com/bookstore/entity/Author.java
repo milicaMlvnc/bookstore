@@ -32,6 +32,10 @@ public class Author implements Serializable {
 	public Author() {
 	}
 
+	public Author(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}

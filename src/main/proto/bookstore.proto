@@ -10,7 +10,8 @@ message BookProto {
 	string title = 2;
 	string description = 3;
 	int32 pageNumber = 4;
-	AuthorProto author = 5;
+	int32 price = 5;
+	AuthorProto author = 6;
 }
 
 message BookList {
@@ -31,7 +32,7 @@ service BookService {
 
 	rpc SavePost(BookProto) returns (BookProto);
 
-	rpc SaveList(BookList) returns (NoParamRequest);
+	rpc SaveList(BookList) returns (BookList);
 	
 //	rpc DeletePost(BookProto) returns (BookProto);
 
