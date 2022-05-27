@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpcBookstore";
+
+// ---------- BookService ----------
+
+message BookProto {
+	int32 id = 1;
+	string title = 2;
+	string description = 3;
+	int32 pageNumber = 4;
+	AuthorProto author = 5;
+}
+
+message BookList {
+  repeated BookProto books = 1;
+}
+
+message NoParamRequest {}
+
+message AuthorProto {
+  int32 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+}
+
+service BookService {
+
+  rpc GetAll(NoParamRequest) returns (BookList);
+
+	rpc SavePost(BookProto) returns (BookProto);
+
+	rpc SaveList(BookList) returns (NoParamRequest);
+	
+//	rpc DeletePost(BookProto) returns (BookProto);
+
+//  rpc GetOne(BookProto) returns (BookProto);
+	
+}
+

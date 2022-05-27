@@ -1,0 +1,19 @@
+type Query {
+  getAll: [Book]!
+}
+
+type Mutation {
+	save(id: ID, title: String, description: String, pageNumber: String, price: String, authorId: ID): Post
+}
+
+type Book {
+  id: ID
+  title: String
+  author: Author
+}
+
+type Author {
+	id: ID
+	firstName: String
+	lastName: String
+}
